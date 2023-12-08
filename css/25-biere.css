@@ -1,0 +1,48 @@
+#title{
+    color: purple;
+}
+body{
+    font-family: caveat, serif;
+}
+#tagline{
+    text-align: center;
+    font-size: 14px;
+}
+
+#description{
+    color: black;
+    font-size: 16px;
+    text-align: left;
+}
+
+#tips{
+    text-align: left;
+    color: purple;
+    font-size: 16px;
+}
+
+#info p{
+    text-align: left!important;
+    color: purple;
+    font-size: large;
+}
+#info p strong{
+    text-align: left!important;
+    font-weight: bold;
+    color: black!important;
+}
+#info li{
+    color: purple;
+    text-align: left!important;
+}
+
+.form-check{
+    text-align: left!important;
+    font-size: 16px;
+
+}
+#footer{
+    text-align: center;
+    font-size: 1em;
+    color: purple;
+}
