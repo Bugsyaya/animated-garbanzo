@@ -11,14 +11,17 @@
     <body>
         
         <div class="container mt-4">
-            <div>
+            <div class="mb-5">
                 <h1 class="display-4 text-center"></h1>
             </div>
         
             <div class="d-flex flex-column container-sm">
                 <div class="d-flex justify-content-between w-100 row">
-                    <div class="d-flex gap-5 col-sm" style="width: 200px; height: 500px;">
-                        <img src="" class="img-fluid" alt="Image" height="450">
+                    <div class="d-flex gap-5 col-sm">
+                        <div class="text-center">
+                            <img src="" class="img-fluid" alt="Image" style="width: 142px; height: 541px;">
+                            <p></p>
+                        </div>
                         <div class="d-flex flex-column"> 
                             <span class="fw-bold" id="span1"></span>
                             <span class="fw-bold" id="span2"></span>
@@ -28,22 +31,32 @@
                             <span class="fw-bold" id="span6">
                                 <ul>
                                     <li></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </span>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="checkbox">
-                                <label class="form-check-label" for="checkbox">
+                                <label class="form-check-label fw-bold" for="checkbox">
                                     Déja bu
                                 </label>
                             </div>
-                            <div class="form-group mt-3" id="textInputContainer" style="display: none;">
+                            <div class="form-group mt-3 fw-bold" id="textInputContainer" style="display: none;">
                                 <label for="textInput">Date dégustation</label>
                                 <input type="text" class="form-control" id="textInput">
                             </div>
                         </div>
-                    </div>   
+            
+                    </div> 
+                    <div class="col-md-6">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark" style="opacity: 40%;">
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>  
                 </div>
-
             </div>
         </div>
 
@@ -64,6 +77,16 @@
                             for (let i = 0; i < data[0].food_pairing.length; i++) {
                                 document.querySelector('#span6 ul li:nth-child(' + (i + 1) + ')').innerHTML = data[0].food_pairing[i];
                             }
+                            document.querySelector('thead').innerHTML += '<tr><th>Malt</th><th></th><th></th></tr>'
+                            for (let j = 0; j < data[0].ingredients.malt.length; j++) {
+                                document.querySelector('tbody').innerHTML += '<tr><td></td><td>' + data[0].ingredients.malt[j].name + '</td><td>' + data[0].ingredients.malt[j].amount.value + ' ' + data[0].ingredients.malt[j].amount.unit + '</td></tr>';
+                            }
+                            document.querySelector('tbody').innerHTML += '<tr><td>Hops</td><td></td><td></td></tr>'
+                            for (let k = 0; k < 6; k++) {
+                                document.querySelector('tbody').innerHTML += '<tr><td></td><td>' + data[0].ingredients.hops[k].name + '</td><td>' + data[0].ingredients.hops[k].amount.value + ' ' + data[0].ingredients.hops[k].amount.unit + '</td></tr>';
+                            }
+                            document.querySelector('tbody').innerHTML += '<tr><td>Yeast</td><td>' + data[0].ingredients.yeast + '</td><td></td></tr>';
+                            document.querySelector('p').innerHTML = data[0].tagline;
                         })
                         .catch(error => console.error('Erreur lors de la récupération des données:', error));
             });
