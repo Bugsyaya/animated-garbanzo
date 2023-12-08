@@ -9,9 +9,6 @@ nav a {
 }
 
 #main {
-    display: flex;
-    flex-wrap: wrap;
-
     padding: 100px;
     padding-bottom: 50px;
 }
