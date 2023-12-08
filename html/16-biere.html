@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/16-biere.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Libertine Porter</title>
+</head>
+
+<body>
+<div class="d-flex flex-column gap-5">
+    <div class="d-flex align-items-center w-100 bg-light text-black">
+        <div class="flex-grow-1">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 24 24" style="fill: #000;">
+                    <path d="M13.293 6.293 7.586 12 13.293 17.707l1.414-1.414L10.414 12l4.293-4.293z"></path>
+                </svg>
+            </a>
+        </div>
+        <div class="flex-grow-1">
+            Libertine Porter
+        </div>
+    </div>
+    <div class="d-flex flex-column container-sm gap-5">
+        <div class="d-flex justify-content-between w-100 row">
+            <div class="d-flex gap-5 col-sm">
+                <img src="https://images.punkapi.com/v2/16.png" alt="Rabiator" height="450">
+                <div class="d-flex flex-column">
+                    <span class="fw-bold">Libertine Porter</span>
+                    <span class="fw-bold">ABV: 6.1</span>
+                    <span class="fw-bold">IBU: 45</span>
+                    <span class="fw-bold">EBC: 219</span>
+                    <span class="fw-bold">Volume: 20</span>
+                    <span class="fw-bold">Boil Volume: 25</span>
+                    <span class="fw-bold">Method: Mash Temp</span>
+                </div>
+            </div>
+            <div class="col">
+                <table class="table table-light table-hover">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Ingredient</th>
+                        <th scope="row">Quantity</th>
+                        <th scope="row">Detail</th>
+                    </tr>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>0.31 kg</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Flaked Oats</td>
+                        <td>0.31 kg</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Smoked Malt</td>
+                        <td>0.06 kg</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Columbus (Start)</td>
+                        <td>31.25 g</td>
+                        <td>Bitter</td>
+                    </tr>
+                    <tr>
+                        <td>Columbus (End)</td>
+                        <td>25 g</td>
+                        <td>Bitter</td>
+                    </tr>
+                    <tr>
+                        <td>Willamette (End)</td>
+                        <td>25 g</td>
+                        <td>Flavour</td>
+                    </tr>
+                    <tr>
+                        <td>Galena (End)</td>
+                        <td>25 g</td>
+                        <td>Flavour</td>
+                    </tr>
+                    <tr>
+                        <td>Columbus (Dry Hop)</td>
+                        <td>75 g</td>
+                        <td>Aroma</td>
+                    </tr>
+                    <tr>
+                        <td>Galena (Dry Hop)</td>
+                        <td>75 g</td>
+                        <td>Aroma</td>
+                    </tr>
+                    <tr>
+                        <td>Simcoe (Dry Hop)</td>
+                        <td>100 g</td>
+                        <td>Aroma</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-between w-100 row">
+            <div class="d-flex flex-column gap-3 col">
+                <div class="rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+                <p>
+                    Brewer Tips : Mash in at a higher temperature to leave more unfermentable sugars in the wort. This gives the beer a sweeter porter profile.
+                </p>
+                <p>
+                    Contributed By Sam Mason
+                </p>
+            </div>
+            <div class="col mt-2">
+                <div class="form-floating">
+                    <textarea class="form-control h-75" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Comments</label>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center gap-1 w-100">
+            <button type="button" class="btn btn-light" id="previousButton">Previous</button>
+            <button type="button" class="btn btn-light" id="nextButton">Next</button>
+        </div>
+    </div>
+    <div class="bg-light p-3">
+        <div class="text-black text-center">
+            Titouan Cocheril - FIL A1
+        </div>
+    </div>
+</div>
+
+    <script>
+        document.querySelectorAll('.rating .star').forEach(function(star) {
+            star.addEventListener('click', function() {
+                alert('Star clicked!');
+            });
+        });
+        document.getElementById('previousButton').addEventListener('click', function() {
+            window.location.href = './15-biere.html';
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            window.location.href = './17-biere.html';
+        });
+    </script>
+</body>
+</html>

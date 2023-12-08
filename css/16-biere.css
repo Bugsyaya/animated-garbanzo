@@ -1,0 +1,9 @@
+.rating > .star {
+    font-size: 25px;
+    color: #ddd;
+}
+
+.rating > .star:hover {
+    color: #f5c518;
+    cursor: pointer;
+}
