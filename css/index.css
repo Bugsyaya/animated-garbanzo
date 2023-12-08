@@ -1,5 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
 html {
-	box-sizing: border-box;
-	height: 100vh;
-	width: 100wh;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100wh;
+}
+
+svg {
+    margin: 0;
+    padding: 0;
+    color: black;
 }
