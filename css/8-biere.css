@@ -1,0 +1,7 @@
+img{
+    height: 300px !important
+}
+
+#stars>:not(.ratedStar){
+    filter: grayscale(1);
+}
