@@ -7,3 +7,27 @@ nav a {
     color: black;
     font-size: 50px;
 }
+
+footer {
+    display: flex;
+    height: 70px;
+
+    justify-content: center;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 100px;
+}
+
+.beer-info-container {
+    flex: 0 0 50%;
+
+}
+
+#beer {
+    width: 125px;
+}
+
