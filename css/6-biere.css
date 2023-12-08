@@ -1,0 +1,22 @@
+nav a {
+    position: absolute;
+    left: 50px;
+    top: -6px;
+
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+}
+
+#main {
+    padding: 100px;
+    padding-bottom: 50px;
+}
+
+.beer-info-container {
+    flex: 0 0 50%;
+}
+
+#beer {
+    width: 125px;
+}
