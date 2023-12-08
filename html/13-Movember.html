@@ -12,7 +12,7 @@
 		<div class="container-fluid">
 		  <a class="navbar-brand" href="/html/index.html"><</a>
 		  <div class="mx-auto">
-		  <h1 class="text-center">Movember</h1>
+		<h1 class="text-center" id="beerName"></h1>
 		</div>
 	  </nav>
 	  <div class="container">
@@ -21,21 +21,18 @@
 				<div class="container">
 					<div class="row">
 						<div class="col">
-							<img src="https://images.punkapi.com/v2/13.png" style="width: 100px; height: 300px;" alt=imageMovember">
+							<img src="https://images.punkapi.com/v2/13.png" style="width: 100px; height: 300px;" alt=imageMovember" id="beerImg">
 						</div>
 						<div class="col mt-5">
-							<p id="first_brewed">First brewed : 11/2009</p>
-							<p id="ph">PH : 5.2</p>
-							<ul class="list-group">
+							<p id="first_brewed"></p>
+							<p id="ph"></p>
+							<ul class="list-group" id="food_pairing">
 								Food pairing :
-								<li class="list-group-item">Vegetable egg scramble</li>
-								<li class="list-group-item">Margherita pizza</li>
-								<li class="list-group-item">Fresh berry crisp tart</li>
 							  </ul>
 							  <br>
 							  <p><input type="checkbox"> Déjà bu ?</p> 
 						</div>
-						<p>Moustache-Worthy Beer.</p>
+						<p id="tagline">Moustache-Worthy Beer.</p>
 						<div class="rating">
 							<input type="checkbox" id="star5" name="rating" value="5">
 							<label for="star5"></label>
@@ -48,9 +45,9 @@
 							<input type="checkbox" id="star1" name="rating" value="1">
 							<label for="star1"></label>
 						</div>
-						<p>A deliciously robust, black malted beer with a decadent dark, dry cocoa flavour that provides an enticing backdrop to the Cascade hops.</p>
-						<p>Brewers tips : If you can’t find really fresh cascade, substitute it for Amarillo or Ahtanum.	</p>
-						<p>Contributed by : Sam Mason </p>
+						<p id="description"></p>
+						<p id="brewersTips"></p>
+						<p id="contribute"></p>
 					</div>
 				</div>
 
@@ -72,8 +69,8 @@
 						</tr>
 						<tr>
 							<td>hops</td>
-							<td id="hopsName">Cascade</td>
-							<td id="hopsAmount">43.8 grams</td>
+							<td id="hopsName"></td>
+							<td id="hopsAmount"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -82,8 +79,8 @@
 						</tr>
 						<tr>
 							<td>yeast</td>
-							<td id="yeastName">Wyeast 1056 - American Ale™</td>
-							<td id="yeastAmount">250 grams</td>
+							<td id="yeastName"></td>
+							<td id="yeastAmount"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -114,18 +111,43 @@
   
   <script>
     async function getBeerData() {
-        const reponse = await fetch(" https://api.punkapi.com/v2/beers/28");
-        const beerData = await reponse.json();
+    const response = await fetch("https://api.punkapi.com/v2/beers/13");
+    const beerData = await response.json();
+
+    if (beerData && beerData.length > 0) {
+        const beer = beerData[0];
         console.log(beerData);
-        if (beerData) {
-            document.getElementById('beerName').innerHTML = beerData[0].name;
-            //document.getElementById('beerImg').src = beerData[0].image_url;
-            document.getElementById('tagline').innerHTML = beerData[0].tagline;
-            document.getElementById('description').innerHTML = beerData[0].description;
-            document.getElementById('first_brewed').innerHTML = "First brewed: " + beerData[0].first_brewed;
-            document.getElementById('ph').innerHTML = "PH: " + beerData[0].first_brewed;
-        }
-    }
+        console.log(beer.name);
+		document.getElementById('beerName').innerHTML = beerData[0].name;
+        document.getElementById('tagline').innerHTML = beer.tagline;
+        document.getElementById('beerImg').src = beer.image_url;
+        document.getElementById('description').innerHTML = beer.description;
+        document.getElementById('first_brewed').innerHTML = "First brewed: " + beer.first_brewed;
+        document.getElementById('ph').innerHTML = "PH: " + beer.ph;
+		document.getElementById('hopsName').innerHTML = beer.ingredients.hops[0].name;
+        document.getElementById('hopsAmount').innerHTML = beer.ingredients.hops[0].amount.value + ' ' + beer.ingredients.hops[0].amount.unit;
+        document.getElementById('yeastName').innerHTML = beer.ingredients.yeast.name;
+		document.getElementById('brewersTips').innerHTML = beer.brewers_tips;
+		document.getElementById('contribute').innerHTML = beer.contributed_by;
+		let food_pairing = document.getElementById('food_pairing');
+            beerData[0].food_pairing.forEach((item) => {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(item));
+                food_pairing.appendChild(li);
+            });
+			const maltTable = document.querySelector('#maltTable tbody');
+
+			beer.ingredients.malt.forEach((malt) => {
+				const row = maltTable.insertRow();
+				const cell1 = row.insertCell(0);
+				const cell2 = row.insertCell(1);
+				const cell3 = row.insertCell(2);
+
+				cell1.innerHTML = malt.name;
+				cell2.innerHTML = malt.amount.value + ' ' + malt.amount.unit;
+				cell3.innerHTML = ''; 
+			});    }
+}
     getBeerData()
 
 </script>
