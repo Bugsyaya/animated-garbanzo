@@ -1,0 +1,27 @@
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  display: inline-block;
+  cursor: pointer;
+  color: #ddd;
+  margin-right: 10px;
+}
+
+.rating label:before {
+  content: "\2605"; /
+}
+
+.rating input:checked ~ label {
+  color: #fdd835; 
+}
