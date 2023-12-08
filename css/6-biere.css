@@ -1,0 +1,9 @@
+nav a {
+    position: absolute;
+    left: 50px;
+    top: -6px;
+
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+}
