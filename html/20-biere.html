@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/20-biere.css" />
+        <meta charset="UTF-8">
+        <title>Catalogue de bières</title>
+    </head>
+
+    <body>
+        <div id="root">
+        </div>
+        
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('https://api.punkapi.com/v2/beers/20')
+                        .then(response => response.json())
+                        .then(data => {
+                            const root = document.getElementById('root');
+                            root.innerHTML = 
+                            `<div class="d-flex flex-column gap-5">
+            <div class="d-flex align-items-center w-100 bg-primary text-white">
+                <div class="flex-grow-1" role="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 24 24" style="fill: #FFF;transform: ;msFilter:;"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
+                </div>
+                <div class="flex-grow-1">
+                    ${data[0].name}
+                </div>
+            </div>
+            <div class="d-flex flex-column container-sm gap-5">
+                <div class="d-flex justify-content-between w-100 row">
+                    <div class="d-flex gap-5 col-sm">
+                        <img src="https://images.punkapi.com/v2/keg.png" alt="Rabiator" height="450">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold">${data[0].first_brewed}</span>
+                            <span class="fw-bold">PH : ${data[0].ph}</span>
+                            <span class="fw-bold">Niveau d'atténuation : ${data[0].attenuation_level}</span>
+                            <span class="fw-bold">Volume d'ébullition : ${data[0].boil_volume.value} L</span>
+                            <span class="fw-bold">Accords culinaires : <ul>${data[0].food_pairing.map(food => {return `<li>${food}</li>`}).join('')}</ul></span>
+                            <span class="fw-bold">Déjà bu</span>
+                            <span class="fw-bold">Date de dégustation :</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <table class="table table-light table-hover">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Malt</th>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                ${data[0].ingredients.malt.map(malt => {
+                                    return `
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>${malt.name}</td>
+                                        <td>${malt.amount.value}</td>
+                                    </tr>
+                                `
+                                }).join('')}
+                                <tr>
+                                    <th scope="row">Hops</th>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                ${data[0].ingredients.hops.map(hops => {
+                                    return `
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>${hops.name}</td>
+                                        <td>${hops.amount.value}</td>
+                                    </tr>
+                                `
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-between w-100 row">
+                    <div class="d-flex flex-column gap-3 col">
+                        <span>Clément</span>
+                        <div class="d-flex gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #FFD500;transform: ;msFilter:;"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #FFD500;transform: ;msFilter:;"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #FFD500;transform: ;msFilter:;"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #FFD500;transform: ;msFilter:;"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: #FFD500;transform: ;msFilter:;"><path d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z"></path></svg>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quasi eaque. Ratione rerum repudiandae odit natus aut, sapiente minus mollitia soluta totam, repellat perferendis eligendi fugiat quae sint rem vitae?
+                        </p>
+                        <p>
+                            ${data[0].brewers_tips}
+                        </p>
+                        <p>
+                            ${data[0].contributed_by}
+                        </p>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating h-100">
+                            <textarea class="form-control h-100" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Comments</label>
+                          </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center gap-1 w-100">
+                    <a href="19-biere.html" class="btn btn-primary" tabindex="-1" role="button">Précédent</a>
+                    <a href="21-biere.html" class="btn btn-primary" tabindex="-1" role="button">Suivant</a>
+                </div>
+            </div>
+            <div class="bg-primary p-3">
+                <div class="text-white text-center">
+                    Clément - FIL A1
+                </div>
+            </div>
+        </div>`;
+                        })
+                        .catch(error => console.error('Erreur lors de la récupération des données:', error));
+            });
+        </script>
+    </body>
+</html>
