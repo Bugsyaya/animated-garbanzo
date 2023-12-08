@@ -79,7 +79,13 @@
             <p id="tagLine"></p>>
           </div>
           <div class="row">
-            étoiles
+            <div class="rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+          </div>
           </div>
           <div class="row">
             <p id="description"></p>
@@ -117,5 +123,10 @@
   <!-- Appel de la fonction après le chargement de la page -->
   <script>
       document.addEventListener('DOMContentLoaded', afficherFilms);
+      document.querySelectorAll('.rating .star').forEach(function(star) {
+            star.addEventListener('click', function() {
+                alert('Star clicked!');
+            });
+        });
   </script>
 </html>
