@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../css/17-biere.css" />
+        <meta charset="UTF-8">
+        <title>17-Biere</title>
+    </head>
+
+    <body>
+        
+        <div class="container mt-4">
+            <div class="mb-5">
+                <h1 class="display-4 text-center"></h1>
+            </div>
+        
+            <div class="d-flex flex-column container-sm">
+                <div class="d-flex justify-content-between w-100 row">
+                    <div class="d-flex gap-5 col-sm">
+                        <div class="text-center">
+                            <img src="" class="img-fluid" alt="Image" style="width: 142px; height: 541px;">
+                            <p></p>
+                        </div>
+                        <div class="d-flex flex-column"> 
+                            <span class="fw-bold" id="span1"></span>
+                            <span class="fw-bold" id="span2"></span>
+                            <span class="fw-bold" id="span3"></span>
+                            <span class="fw-bold" id="span4"></span>
+                            <span class="fw-bold" id="span5"></span>
+                            <span class="fw-bold" id="span6">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkbox">
+                                <label class="form-check-label fw-bold" for="checkbox">
+                                    Déja bu
+                                </label>
+                            </div>
+                            <div class="form-group mt-3 fw-bold" id="textInputContainer" style="display: none;">
+                                <label for="textInput">Date dégustation</label>
+                                <input type="text" class="form-control" id="textInput">
+                            </div>
+                        </div>
+            
+                    </div> 
+                    <div class="col-md-6">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark" style="opacity: 40%;">
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('https://api.punkapi.com/v2/beers/17')
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            document.querySelector('h1').innerHTML = data[0].name;
+                            document.querySelector('img').src = data[0].image_url;
+                            // Fill the spanst with these informations : first_brewed, PH, attenuation_level, boil_volume, food_pairing
+                            document.querySelector('#span1').innerHTML = "first_brewed : " + data[0].first_brewed;
+                            document.querySelector('#span2').innerHTML = "PH : " + data[0].ph;
+                            document.querySelector('#span3').innerHTML = "attenuation_level : " + data[0].attenuation_level;
+                            document.querySelector('#span4').innerHTML = "boil_volume : " + data[0].boil_volume.value + ' ' + data[0].boil_volume.unit;
+                            document.querySelector('#span5').innerHTML = "food_pairing : ";
+                            for (let i = 0; i < data[0].food_pairing.length; i++) {
+                                document.querySelector('#span6 ul li:nth-child(' + (i + 1) + ')').innerHTML = data[0].food_pairing[i];
+                            }
+                            document.querySelector('thead').innerHTML += '<tr><th>Malt</th><th></th><th></th></tr>'
+                            for (let j = 0; j < data[0].ingredients.malt.length; j++) {
+                                document.querySelector('tbody').innerHTML += '<tr><td></td><td>' + data[0].ingredients.malt[j].name + '</td><td>' + data[0].ingredients.malt[j].amount.value + ' ' + data[0].ingredients.malt[j].amount.unit + '</td></tr>';
+                            }
+                            document.querySelector('tbody').innerHTML += '<tr><td>Hops</td><td></td><td></td></tr>'
+                            for (let k = 0; k < 6; k++) {
+                                document.querySelector('tbody').innerHTML += '<tr><td></td><td>' + data[0].ingredients.hops[k].name + '</td><td>' + data[0].ingredients.hops[k].amount.value + ' ' + data[0].ingredients.hops[k].amount.unit + '</td></tr>';
+                            }
+                            document.querySelector('tbody').innerHTML += '<tr><td>Yeast</td><td>' + data[0].ingredients.yeast + '</td><td></td></tr>';
+                            document.querySelector('p').innerHTML = data[0].tagline;
+                        })
+                        .catch(error => console.error('Erreur lors de la récupération des données:', error));
+            });
+            document.getElementById('checkbox').addEventListener('change', function () {
+                var textInputContainer = document.getElementById('textInputContainer');
+                if (this.checked) {
+                    textInputContainer.style.display = 'block';
+                } else {
+                    textInputContainer.style.display = 'none';
+                }
+            });
+            var textInput = document.getElementById('textInput');
+
+            var storedValue = localStorage.getItem('textInputValue');
+            if (storedValue) {
+                textInput.value = storedValue;
+                document.getElementById('textInputContainer').style.display = 'block';
+                checkbox.checked = true;
+            }
+
+            textInput.addEventListener('input', function () {
+                localStorage.setItem('textInputValue', this.value);
+            });
+        </script>
+    </body>
+</html>
