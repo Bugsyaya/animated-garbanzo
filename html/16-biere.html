@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../css/16-biere.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Libertine Porter</title>
 </head>
 
 <body>
@@ -122,8 +122,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-center gap-1 w-100">
-            <button type="button" class="btn btn-light" href="./15-biere">Previous</button>
-            <button type="button" class="btn btn-light" href="./17-biere">Next</button>
+            <button type="button" class="btn btn-light" id="previousButton">Previous</button>
+            <button type="button" class="btn btn-light" id="nextButton">Next</button>
         </div>
     </div>
     <div class="bg-light p-3">
@@ -138,6 +138,13 @@
             star.addEventListener('click', function() {
                 alert('Star clicked!');
             });
+        });
+        document.getElementById('previousButton').addEventListener('click', function() {
+            window.location.href = './15-biere.html';
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            window.location.href = './17-biere.html';
         });
     </script>
 </body>
