@@ -1,0 +1,11 @@
+html {
+	box-sizing: border-box;
+	height: 100vh;
+	width: 100wh;
+}
+
+#name_biere {
+    font-size: xx-large;
+    border: solid black 2px;
+    width:fit-content;
+}
