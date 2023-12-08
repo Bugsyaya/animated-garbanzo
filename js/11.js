@@ -34,4 +34,6 @@ async function afficherFilms() {
     } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
     } 
+    // Appeler la fonction fetchData lorsque la page est chargée
+    document.addEventListener('DOMContentLoaded', afficherFilms);
 }
