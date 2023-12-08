@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/10-biere.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Catalogue des bières</title>
+    <script src="../js/api-fetch.js"></script>
+</head>
+<body>
+<header class="d-flex align-items-center justify-content-center position-relative border-bottom border-2 border-black">
+    <a class="position-absolute start-0 text-decoration-none text-black m-lg-5 h1"><</a>
+    <h1 id="name"></h1>
+</header>
+<div class="d-flex justify-content-center align-items-center h-100 p-5 g-5">
+    <div class="d-flex flex-column m-1" style="width: 40%">
+        <div class="d-flex flex-row">
+            <img id="img" height="500px" alt="" src="">
+            <div class="d-flex flex-column mt-5 m-lg-3">
+                <ul class="list-unstyled">
+                    <li id="first-brewed"></li>
+                    <li id="ph"></li>
+                    <li id="attenuation_level"></li>
+                    <li id="boil-volume"></li>
+                </ul>
+                <p>Food pairing :</p>
+                <ul id="food_pairing-list"></ul>
+                <div>
+                    <label for="dejabu">
+                        Déja bu
+                    </label>
+                    <input id="dejabu" type="checkbox">
+                </div>
+                <div>
+                    <label for="date">
+                        Date de dégustation
+                    </label>
+                    <input id="date" type="date">
+                </div>
+            </div>
+        </div>
+        <p id="tagline"></p>
+        <p id="description"></p>
+        <p id="brewers_tips"></p>
+        <p id="contributed_by"></p>
+    </div>
+    <div class="d-flex flex-column m-1" style="width: 40%">
+        <table class="table" id="table">
+            <tbody>
+            <tr id="malts">
+                <th scope="row">Malts</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="hops">
+                <th scope="row">Hops</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Yeast</th>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td id="yeast"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <label for="avis" class="mt-5">
+            Avis
+        </label>
+        <textarea rows="5" id="avis" class="h-25"></textarea>
+    </div>
+</div>
+<div class="d-flex align-items-center justify-content-center mb-5">
+    <button id="prev" class="m-2">Précédent</button>
+    <button id="next" class="m-2">Suivant</button>
+</div>
+<footer class="d-flex align-items-center justify-content-center border-top border-2 border-black">
+    <h5>Frédéric - FILA1</h5>
+</footer>
+</body>
+</html>
