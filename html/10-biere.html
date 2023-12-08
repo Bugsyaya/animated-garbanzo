@@ -14,7 +14,7 @@
     <h1 id="name"></h1>
 </header>
 <div class="d-flex justify-content-center align-items-center h-100 p-5 g-5">
-    <div class="d-flex flex-column" style="width: 40%">
+    <div class="d-flex flex-column m-1" style="width: 40%">
         <div class="d-flex flex-row">
             <img id="img" height="500px" alt="" src="">
             <div class="d-flex flex-column mt-5 m-lg-3">
@@ -45,21 +45,19 @@
         <p id="brewers_tips"></p>
         <p id="contributed_by"></p>
     </div>
-    <div class="d-flex flex-column" style="width: 40%">
-        <table class="table">
+    <div class="d-flex flex-column m-1" style="width: 40%">
+        <table class="table" id="table">
             <tbody>
             <tr id="malts">
                 <th scope="row">Malts</th>
                 <td></td>
                 <td></td>
             </tr>
-
             <tr id="hops">
                 <th scope="row">Hops</th>
                 <td></td>
                 <td></td>
             </tr>
-
             <tr>
                 <th scope="row">Yeast</th>
                 <td></td>
@@ -78,7 +76,10 @@
         <textarea rows="5" id="avis" class="h-25"></textarea>
     </div>
 </div>
-
+<div class="d-flex align-items-center justify-content-center mb-5">
+    <button id="prev" class="m-2">Précédent</button>
+    <button id="next" class="m-2">Suivant</button>
+</div>
 <footer class="d-flex align-items-center justify-content-center border-top border-2 border-black">
     <h5>Frédéric - FILA1</h5>
 </footer>
