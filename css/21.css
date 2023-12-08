@@ -1,0 +1,38 @@
+.navbar-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand > span{
+    width: 50%  ;
+}
+
+.p-3{
+    background-color: #f8f9fa;
+}
+
+.btn{
+    border: lightgrey 2px solid;
+    background-color: #f8f9fa;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+textarea{
+    height: 80%;
+}
+
+.maincontainer {
+    padding: 1% 5%;
+}
+
+p{
+    margin: 0;
+}
